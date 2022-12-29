@@ -24,15 +24,15 @@ Go to the directory where you want to place the project files using git bash (te
 
 run the command
 
-    git clone URL
+    git clone https://github.com/mostaeen/access-control
 
 Please note that you need to authenticate to clone this private repository.
 
 ### 3. Install dependencies
 
-now navigate to the project directory with cmd (terminal for mac)
+now navigate to the project directory with cmd
 run the command
-
+    cd access-control
     npm install
 
 wait for it to be completed. It usually takes a minute or less to complete.
@@ -44,21 +44,11 @@ It will download all the dependencies.
 
 or,
 
-    node app.js
+    node index.js
 
-It will serve the project on default port (7867).
+It will serve the project on default port (3000).
 
-## Developer Hint
 
-### Please change your editor configuration like below before you start development
-
-#### Indent character: "\t" (tab)
-
-#### Indent size: 2
-
-#### Line endings: LF (unix)
-
-It's good to remember that, **./app.js** is the entry point to the app.
 
 ### Install the global packages
 
@@ -73,9 +63,9 @@ You might need to mention `sudo` in few cases.
 
 run the command
 
-    npm run dev
+    npm start
 
-It will serve the project. On any file saved, the app will be restarted and linted.
+It will serve the project.
 
 ### Build apidoc
 
@@ -85,38 +75,10 @@ run the command
 
 It will build the apidoc in the directory **./apidoc**.
 
-### Lint source
-
-run the command
-
-    npm run eslint
-
-It will show warnings and errors if there is any formatting issue. In case of no formatting issue, it will show nothing.
-
-## Versioning Guide
-
-This project follows the [Schemantic Versioning](https://semver.org/) rules where the version numbers must be integers. For example, we will use 1.2.3 as version in the commands below.
-
-- Make sure your branch is up to date,
-
-      git fetch origin
-      git pull origin develop
-
-- **Replace** old version (lets say 1.2.2) with 1.2.3 in the following files using **Find and Replace** and **commit** the changes,
-
-      /apidoc.json
-      /routes/admin.js
-      /routes/public.js
-      /routes/token.js
-      /routes/user.js
-
 - Run the following command and **commit** the changes
 
       npm run apidoc
 
-- Finally run this,
-
-      npm version 1.2.3 && git push
 
 
 📦mongo-1
@@ -151,4 +113,3 @@ This project follows the [Schemantic Versioning](https://semver.org/) rules wher
  ┣ 📜package.json
  ┣ 📜README.md
  ┗ 📜regex.js
- 
