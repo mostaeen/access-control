@@ -1,0 +1,7 @@
+{
+  "name": "Role Based Authentication",
+  "version": "0.0.1",
+  "description": "REST API documentation \n\nNote: Please collect your API Credentials from system admin before you start. Also contact admin in case of any issue.",
+  "title": "Role Based Authentication | REST API",
+  "order": ["User_Authentication", "Users", "User_Registration", "User_Login"]
+}
