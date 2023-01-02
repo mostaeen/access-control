@@ -39,6 +39,8 @@ function getAll(schema, relate = '') {
 function create(schema) {
   return async (req, res) => {
     try {
+      // const items=JSON.parse(fs.readFileSinc('data.json','utf-8'))
+      // await Genre.create(items)
       let item = new schema(req.body);
       item = await item.save();
       res.status(200).send(item);
