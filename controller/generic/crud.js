@@ -1,4 +1,4 @@
-import { isvalidID } from "../../regex.js";
+import { isvalidID } from '../../regex.js';
 
 function get(schema) {
   return async (req, res) => {
@@ -7,7 +7,7 @@ function get(schema) {
         const item = await schema.findById(req.params.id);
         res.status(200).send(item);
       } else {
-        res.status(400).send("Please provide a valid id");
+        res.status(400).send('Please provide a valid id');
       }
     } catch (error) {
       res.status(500).send(error.message);
@@ -15,13 +15,19 @@ function get(schema) {
   };
 }
 
-function getAll(schema, relate = "") {
+function getAll(schema, relate = '') {
   return async (req, res) => {
     try {
+      // console.log(req.query);
       const allItems = await schema
         .find()
+        .skip(
+          (parseInt(req.query.pageNumber) - 1) *
+            (parseInt(req.query.pageSize) || 4)
+        )
+        .limit(parseInt(req.query.pageSize) || 4)
         .populate([
-          { path: relate, select: "name -_id", strictPopulate: false },
+          { path: relate, select: 'name -_id', strictPopulate: false },
         ]);
       res.status(200).send(allItems);
     } catch (error) {
@@ -49,7 +55,7 @@ function update(schema) {
         let item = await schema.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).send(item);
       } else {
-        res.status(400).send("Please provide a valid id");
+        res.status(400).send('Please provide a valid id');
       }
     } catch (error) {
       res.status(500).send(error.message);
@@ -63,11 +69,11 @@ function remove(schema) {
       if (req.params.id.match(isvalidID)) {
         const exist = await schema.findById(req.params.id);
         if (!exist)
-          return res.status(404).send("Item with the requested ID not found");
+          return res.status(404).send('Item with the requested ID not found');
         let item = await schema.findByIdAndDelete(req.params.id);
         res.status(200).send(item);
       } else {
-        res.status(400).send("Please provide a valid id");
+        res.status(400).send('Please provide a valid id');
       }
     } catch (error) {
       res.status(500).send(error.message);

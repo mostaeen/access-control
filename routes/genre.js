@@ -14,7 +14,7 @@ router.get('/', getAllGenres);
 
 router.get('/:id', getGenre);
 
-router.post('/', auth, createGenre);
+router.post('/', createGenre);
 
 router.put('/:id', auth, updateGenre);
 
